@@ -1,0 +1,58 @@
+<div>
+  <!-- ? -- START THE FORM -->
+  <form class="form-register" [formGroup]="formRegister" (ngSubmit)="register()" fxLayout="column"
+    fxLayoutAlign="center center" fxLayoutGap="10px">
+    <!-- ? -- START THE INPUT NAME -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Name</mat-label>
+      <input formControlName="name" class="text-input" type="text" matInput placeholder="Enter your Name">
+      <mat-error *ngIf="formRegister.controls['name'].errors?.required">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- ? -- START THE INPUT SURNAME -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Surname</mat-label>
+      <input formControlName="surname" class="text-input" type="text" matInput placeholder="Enter your Surname">
+      <mat-error *ngIf="formRegister.controls['surname'].errors?.required">
+        Surname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- ? -- START THE USERNAME -->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Username</mat-label>
+      <input formControlName="username" class="text-input" type="text" matInput placeholder="Enter your Username">
+      <mat-error *ngIf="formRegister.controls['username'].errors?.required">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- ? -- START THE INPUT EMAIL-->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Email</mat-label>
+      <input formControlName="email" class="text-input" type="email" matInput placeholder="example@example.com">
+      <mat-error *ngIf="formRegister.controls['email'].errors?.email">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="formRegister.controls['email'].errors?.required">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- ? -- START THE INPUT PASSWORD -->
+    <mat-form-field appearance="fill" hintLabel="The password must be a minimun of 6 characters">
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" class="text-input" [type]="hide ? 'password' : 'text'">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon class="text-input">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="formRegister.controls['password'].errors?.minlength">
+        The password must be a minimum of 6 characters.
+      </mat-error>
+      <mat-error *ngIf="formRegister.controls['password'].errors?.required">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- ? -- START THE BUTTON SUBMIT -->
+    <button type="submit" mat-raised-button color="accent">Register</button>
+  </form>
+</div>

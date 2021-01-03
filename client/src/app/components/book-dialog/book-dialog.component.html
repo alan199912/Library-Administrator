@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Add new book</h1>
+<div mat-dialog-content>
+  <div fxLayoutAlign="center" style="margin: 10px 0 10px 0">
+    <mat-card fxFlex="100%">
+      <form [formGroup]="formAdd" (ngSubmit)="addBook()" fxLayout="column" fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+        <!-- ? -- INPUT OF TITLE -->
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Title</mat-label>
+          <input formControlName="title" type="text" matInput>
+          <mat-error *ngIf="formAdd.controls['title'].errors?.required">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- ? -- INPUT OF DESCRIPTION -->
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Description</mat-label>
+          <input formControlName="description" type="text" matInput>
+          <mat-error *ngIf="formAdd.controls['description'].errors?.required">
+            Description is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- ? -- INPUT OF  PRICE-->
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Price</mat-label>
+          <input formControlName="price" type="text" matInput>
+          <mat-error *ngIf="formAdd.controls['price'].errors?.required">
+            Price is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- ? -- INPUT OF  DATE -->
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Date</mat-label>
+          <input formControlName="datePost" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="formAdd.controls['datePost'].errors?.required">
+            Date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- ? -- INPUT OF  AUTHOR -->
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Author</mat-label>
+          <mat-select formControlName="author">
+            <!-- (selectionChange)="onSelected($event) with ngform-->
+            <mat-option *ngFor="let item of authors" [value]="item">
+              {{ item.name + ' ' + item.surname }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formAdd.controls['author'].errors?.required">
+            Author is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div mat-dialog-content>
+          <button type="button" mat-raised-button color="accent" mat-button mat-dialog-close>Close</button>
+          <button type="submit" mat-raised-button color="accent">Save</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

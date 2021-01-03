@@ -1,0 +1,35 @@
+<div fxLayoutAlign="center">
+  <mat-card>
+    <form [formGroup]="formLogin" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center"
+      fxLayoutGap="10px">
+      <!-- ? -- START THE INPUT EMAIL-->
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Email</mat-label>
+        <input formControlName="email" type="email" matInput placeholder="example@example.com">
+        <mat-error *ngIf="formLogin.controls['email'].errors?.email">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="formLogin.controls['email'].errors?.required">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <!-- ? -- START THE INPUT PASSWORD -->
+      <mat-form-field appearance="fill" hintLabel="The password must be a minimun of 6 characters">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="formLogin.controls['password'].errors?.minlength">
+          The password must be a minimum of 6 characters.
+        </mat-error>
+        <mat-error *ngIf="formLogin.controls['password'].errors?.required">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <!-- ? -- START THE BUTTON SUBMIT -->
+      <button type="submit" mat-raised-button color="accent">Login</button>
+    </form>
+  </mat-card>
+</div>

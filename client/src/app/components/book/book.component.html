@@ -1,0 +1,36 @@
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="60%">
+    <input (keyup)="onSearch($event)" matInput type="text" placeholder="Type to serach">
+  </mat-form-field>
+</div>
+<mat-table [dataSource]="dataSource" matSort (matSortChange)="orderColumns($event)">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.title }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.description }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="author">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.author.fullName }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.price }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="unfoldColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: unfoldColumns"></mat-row>
+</mat-table>
+
+<!-- ? PAGINATOR -->
+<!-- ? length is a total records -->
+<mat-paginator (page)="eventPagination($event)" #pagination [pageSize]="booksPerPage" [pageSizeOptions]="itemsPerPage"
+  [length]="totalBooks">
+</mat-paginator>
+
+<button (click)="openDialog()" mat-fab id="btn-add" color="warn">
+  <mat-icon>add</mat-icon>
+</button>

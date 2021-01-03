@@ -1,0 +1,11 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" #menu role="navigation" style="background-color: #E0F7FA; color: black;">
+    <app-nav-list (closeMenu)="menu.close()"></app-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="background: rgba(15, 10, 15, 10);">
+    <app-navbar (menuToggle)="menu.toggle()"></app-navbar>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

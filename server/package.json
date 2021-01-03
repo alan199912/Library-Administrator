@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "It's a project for the library administrator",
+  "main": "src/app",
+  "scripts": {
+    "start": "SET NODE_ENV=production & node src/app",
+    "dev": "nodemon src/app.js"
+  },
+  "author": "Alan Di Masi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.8",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

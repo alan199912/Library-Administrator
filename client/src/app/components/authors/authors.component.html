@@ -1,0 +1,20 @@
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.name }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef>Surname</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.surname }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="fullName">
+    <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.fullName }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="academicDegree">
+    <mat-header-cell *matHeaderCellDef>Academic Degree</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{ elem.academicDegree }}</mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="unfoldColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns:unfoldColumns"></mat-row>
+</mat-table>
